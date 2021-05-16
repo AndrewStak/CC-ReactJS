@@ -1,16 +1,16 @@
-{
-    "posts": [
-      {
-        "title": "My First Blog",
-        "body": "This is my First Blog.",
-        "author": "Andrew",
-        "id": 1
-      },
-      {
-        "title": "Opening Party!",
-        "body": "Celebration with friends",
-        "author": "David",
-        "id": 2
-      }
-    ]
-  }
+{  
+  "posts": [
+    {
+      "title": "My First Blog",
+      "body": "This is my First Blog.",
+      "author": "Andrew",
+      "id": 1
+    },
+    {
+      "title": "Opening Party!",
+      "body": "Celebration with friends",
+      "author": "David",
+      "id": 2
+    }
+  ]
+}

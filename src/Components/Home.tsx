@@ -1,42 +1,20 @@
-import React, { useEffect, useState } from 'react';
 import { PostItem } from '../models';
+import UseFetch from '../UseFetch';
 import PostList from './PostList';
 
+
 const Home = () => {
-    const [data, setData] = useState<PostItem[]>([]);
-    const [isPending, setisPending] = useState(true);
-    const [error, setError] = useState(null);
+    let url = `http://localhost:${process.env.REACT_APP_DB_PORT}/posts`;
+    console.log(url);    
 
-    let url = 'http://localhost:8000/posts';
-
-    useEffect(() => {
-        fetch(url).then(res=>{
-            if(!res.ok) throw Error('Could not fetch the data');
-            return res.json();
-        })
-        .then(data=>{
-            setData(data);
-            setisPending(false);
-            setError(null);
-            console.log(data);
-        })
-        .catch(err=>{
-            setisPending(false);
-            setError(err.message);
-        });
-
-        return () => {
-            
-        };
-    }, [url]);
-    
-
+    const { data, isPending, error } = UseFetch<PostItem[]>(url);
+    console.log(data);
 
     return (
         <div className="home">
-            <div>{error}</div>
-            <div>Loading...</div>
-            <PostList postList={data} />
+            { error && <div>{error}</div>}
+            { isPending && <div>Loading...</div>}
+            { data && <PostList postList={data} />}
         </div>
     );
 }
